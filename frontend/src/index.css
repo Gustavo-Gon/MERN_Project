@@ -11,3 +11,76 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.background {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: 100vh; /* Full view height */
+  background-image: url('/Users/gustavogonzalez/Documents/MERN_Project/frontend/public/LoginBackground.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cursive-text {
+  font-family: 'Brush Script MT'; /* Fallbacks to generic cursive and sans-serif */
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: rgba(255, 255, 255, 0.7); /* White with slight transparency */
+  text-align: center;
+  border-radius: 10px;
+}
+
+
+.form-group {
+  margin-bottom: 15px; /* Space between form elements */
+
+}
+
+.form-control {
+  width: 92%; /* Full width of parent */
+  padding: 10px; /* Padding for the input field */
+  border: 1px solid #ccc; /* Border around the input */
+  border-radius: 15px; /* Rounded corners for the input */
+  background-color: rgba(255, 255, 255, 0.7); /* White with slight transparency */
+}
+
+.btn {
+  
+  padding: 10px 20px; /* Padding inside the button */
+  color: white; /* Text color */
+  background-color: #007BFF; /* Background color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners for the button */
+  cursor: pointer; /* Pointer cursor on hover */
+ 
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Darker background on hover */
+}
+
+.login-help {
+  margin-top: 15px;
+}
+
+.forgot-password,
+.signup-link {
+  display: block;
+  margin: 5px 0; /* Spacing between the links */
+  color: #007BFF; /* Theme color */
+  text-decoration: none; /* No underline */
+}
+
+.forgot-password:hover,
+.signup-link:hover {
+  text-decoration: underline; /* Underline on hover for better usability */
+}
