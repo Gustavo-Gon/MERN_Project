@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,15 +8,13 @@ function App() {
   // State hooks for username and password
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   // Handle input change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'username') {
-      setUsername(value);
-    } else if (name === 'password') {
-      setPassword(value);
-    }
+    setUsername(prev => name === 'username' ? value : prev);
+    setPassword(prev => name === 'password' ? value : prev);
   };
 
   // Handle for submission
@@ -23,6 +22,7 @@ function App() {
     e.preventDefault();
     console.log('Logging in with:', username, password);
     // Add in backend service 
+    navigate('/main-feed');
   };
 
   return (
