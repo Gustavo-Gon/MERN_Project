@@ -1,15 +1,42 @@
+require('dotenv').config();
+
 const express = require('express');
-const mongoose = require('mongoose');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const authRoutes = require('./routes/auth');
 
 const app = express();
-app.use(express.json());
-app.use('/api/auth', authRoutes);
+const port = process.env.PORT || 3000;
 
-// Connect to MongoDB
-mongoose.connect('your_mongodb_connection_string', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
+const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+async function main() {
+  try {
+    await client.connect();
+    console.log("Successfully connected to MongoDB.");
+
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
+
+    // Additional application setup can go here
+    // E.g., app.get(), app.post() route handlers that use the MongoDB client
+
+  } catch (error) {
+    console.error("Failed to connect to MongoDB", error);
+    process.exit(1);
+  }
+}
+
+main().catch(console.error);
+
+process.on('SIGINT', async () => {
+  await client.close();
+  process.exit(0);
+});
