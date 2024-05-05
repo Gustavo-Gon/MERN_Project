@@ -7,3 +7,6 @@ Node(.js) — the premier JavaScript web server (runtime)
 
 Frontend:
 npm start 
+
+Backend:
+node server.js
